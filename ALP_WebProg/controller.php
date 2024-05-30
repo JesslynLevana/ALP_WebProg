@@ -79,6 +79,40 @@ function readMovielist()
 }
 
 $result = readMovielist();
+
+function createMovie(){
+    $title = $_POST["title"];
+    $synopsis = $_POST["synopsis"];
+    $genre = $_POST["genre"];
+    $duration = $_POST["duration"];
+    $released_date = $_POST["released_date"];
+    $age = $_POST["age"];
+    $image = $_POST["image"];
+    $time = $_POST["time"];
+    $day = $_POST["day"];
+
+    $conn = my_connectDB();
+
+    if ($conn != null) {
+        // Query pertama untuk menyisipkan data ke tabel movie
+        $sql_query_movie = "INSERT INTO `movie` (title, synopsis, genre, duration, released_date, age, image) VALUES ('$title', '$synopsis', '$genre', '$duration', '$released_date', '$age', '$image')";
+        // Query kedua untuk menyisipkan data ke tabel showtime
+        $sql_query_showtime = "INSERT INTO `showtime` (time, day) VALUES ('$time', '$day')";
+        
+        // Eksekusi query pertama
+        $result_movie = mysqli_query($conn, $sql_query_movie) or die(mysqli_error($conn));
+        // Eksekusi query kedua
+        $result_showtime = mysqli_query($conn, $sql_query_showtime) or die(mysqli_error($conn));
+        
+        // Memeriksa jika kedua query berhasil dieksekusi sebelum mengembalikan hasil
+        if ($result_movie && $result_showtime) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+    }
+
  ?>
 </body>
 </html>
