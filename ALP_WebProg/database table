@@ -3,10 +3,11 @@ nama db -> alpwebprog
 CREATE TABLE movie(
     movie_id INT AUTO_INCREMENT PRIMARY KEY,
     title VARCHAR(50) NOT NULL,
-	synopsis VARCHAR(300) NOT NULL,
+    synopsis VARCHAR(300) NOT NULL,
     genre VARCHAR(50) NOT NULL,
-	duration TIME NOT NULL,
-	released_date DATE NOT NULL,
+    duration TIME NOT NULL,
+    released_date DATE NOT NULL,
+    age INT NOT NULL,
     image LONGBLOB NOT NULL
 );
 CREATE TABLE times(
@@ -18,4 +19,5 @@ CREATE TABLE showtimes(
     movie_id INT NOT NULL,
     time_id TIME NOT NULL,
     FOREIGN KEY (movie_id) REFERENCES movie(movie_id),
-	FOREIGN KEY (time_id) REFERENCES times(time_id));
+    FOREIGN KEY (time_id) REFERENCES times(time_id)
+);
