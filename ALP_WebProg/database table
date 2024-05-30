@@ -18,6 +18,7 @@ CREATE TABLE showtimes(
     showtime_id INT AUTO_INCREMENT PRIMARY KEY,
     movie_id INT NOT NULL,
     time_id TIME NOT NULL,
+    day VARCHAR(100) NOT NULL,
     FOREIGN KEY (movie_id) REFERENCES movie(movie_id),
     FOREIGN KEY (time_id) REFERENCES times(time_id)
 );
