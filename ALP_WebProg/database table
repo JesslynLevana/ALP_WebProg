@@ -1,4 +1,4 @@
-nama db -> alpwebprog
+nama db -> alp_webprog
 
 CREATE TABLE movie(
     movie_id INT AUTO_INCREMENT PRIMARY KEY,
@@ -14,11 +14,24 @@ CREATE TABLE times(
     time_id INT AUTO_INCREMENT PRIMARY KEY,
     times TIME NOT NULL 
 );
+CREATE TABLE movie(
+    movie_id INT AUTO_INCREMENT PRIMARY KEY,
+    title VARCHAR(50) NOT NULL,
+	synopsis VARCHAR(300) NOT NULL,
+    genre VARCHAR(50) NOT NULL,
+	duration VARCHAR(50) NOT NULL,
+	released_date DATE NOT NULL,
+	age INT NOT NULL,
+    image LONGBLOB NOT NULL
+);
+CREATE TABLE times(
+    time_id INT AUTO_INCREMENT PRIMARY KEY,
+    times TIME NOT NULL 
+);
 CREATE TABLE showtimes(
     showtime_id INT AUTO_INCREMENT PRIMARY KEY,
     movie_id INT NOT NULL,
-    time_id TIME NOT NULL,
-    day VARCHAR(100) NOT NULL,
+    time_id INT NOT NULL,
+    day VARCHAR(50) NOT NULL,
     FOREIGN KEY (movie_id) REFERENCES movie(movie_id),
-    FOREIGN KEY (time_id) REFERENCES times(time_id)
-);
+	FOREIGN KEY (time_id) REFERENCES times(time_id));
